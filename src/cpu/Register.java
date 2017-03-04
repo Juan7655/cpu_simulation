@@ -12,14 +12,14 @@ import java.util.Stack;
  * @author juandavid
  */
 public class Register {
-    private final Stack<Integer> registries = new Stack<>();
+    private final Stack<Integer> records = new Stack<>();
     private int currentValue = -1;
 
     public Register() {
     }
     
     public void putRegistry(int value){
-        this.registries.add(value);
+        this.records.add(value);
         this.currentValue = value;
     }
     
@@ -31,8 +31,8 @@ public class Register {
     }
     
     public Integer[] getAllItems(){
-        Integer[] array = new Integer[this.registries.size()];
-        this.registries.toArray(array);
+        Integer[] array = new Integer[this.records.size()];
+        this.records.toArray(array);
         
         return array;
     }

@@ -5,6 +5,7 @@
  */
 package units;
 
+import cpu.Operation;
 import cpu.Register;
 
 /**
@@ -33,37 +34,26 @@ public class Alu {
         this.collector.putRegistry(collector);
     }
     
-    public void sum(){
-        setCollector(collector.getLastRegistry()+input.getLastRegistry());
+    private void sum(){
+        setCollector(collector.getLastRegistry() + input.getLastRegistry());
     }
     
-    public void subtraction(){
-        setCollector(collector.getLastRegistry()-input.getLastRegistry());
+    private void subtraction(){
+        setCollector(collector.getLastRegistry() - input.getLastRegistry());
     }
     
-    public void square(){
-        setCollector(input.getLastRegistry()*input.getLastRegistry());
+    private void square(){
+        int tempVal = input.getLastRegistry();
+        setCollector(tempVal * tempVal);
     }
     
-    public void move(){
-        
-    }
-    
-    public void end(){
-        
-    }
-    
-    public void decode(int value) {
-        switch (value) {
-            case 0b0000: sum();
+    public void execute(Operation operation) {
+        switch (operation) {
+            case SUM: sum();
                 break;
-            case 0b0001: subtraction();
+            case SUBTRACTION: subtraction();
                 break;
-            case 0b0010: square();
-                break;
-            case 0b0011: move();
-                break;
-            case 0b0100: end();
+            case SQUARE: square();
                 break;
             default: throw new IllegalArgumentException("No se reconoce la operacion seleccionada-ALU");
         }

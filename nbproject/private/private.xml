@@ -4,7 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/juandavid/NetBeansProjects/CPU/src/cpu/Register.java</file>
-            <file>file:/home/juandavid/NetBeansProjects/CPU/src/units/Counter.java</file>
+            <file>file:/home/juandavid/NetBeansProjects/CPU/src/cpu/DataRegister.java</file>
+            <file>file:/home/juandavid/NetBeansProjects/CPU/src/units/Alu.java</file>
+            <file>file:/home/juandavid/NetBeansProjects/CPU/src/cpu/Synchronizer.java</file>
+            <file>file:/home/juandavid/NetBeansProjects/CPU/src/units/ControlUnit.java</file>
         </group>
     </open-files>
 </project-private>
