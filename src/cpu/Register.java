@@ -30,9 +30,15 @@ public class Register {
         return temp;
     }
     
-    public Integer[] getAllItems(){
-        Integer[] array = new Integer[this.records.size()];
-        this.records.toArray(array);
+    public String[] getAllItems(int regSize){
+        String[] array = new String[this.records.size()];
+        
+        for (int i = 0; i < this.records.size(); i++) {
+            array[i] = Integer.toBinaryString(this.records.get(i));
+            while(array[i].length() < regSize){
+                array[i] = "0" + array[i];
+            }
+        }
         
         return array;
     }

@@ -5,6 +5,8 @@
  */
 package cpu;
 
+import gui.Principal;
+
 /**
  *
  * @author juandavid
@@ -15,7 +17,15 @@ public class CPU {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Synchronizer principal = new Synchronizer();
+        principal.tick();
+        new Principal(principal.getValues(0),
+                principal.getValues(1),
+                principal.getValues(2),
+                principal.getValues(3),
+                principal.getValues(4))
+                .setVisible(true);
+
     }
-    
+
 }

@@ -14,8 +14,7 @@ import cpu.Register;
  * @author juandavid
  */
 public class ControlUnit implements Clock {
-
-    private final Counter counter = new Counter();
+    
     private final Register instructionRegistry = new Register();
 
     @Override
@@ -40,5 +39,9 @@ public class ControlUnit implements Clock {
             case 0b0100: return Operation.END;
             default: throw new IllegalArgumentException("No se reconoce la operacion seleccionada-ALU");
         }
+    }
+    
+    public Register getInstructionRegister(){
+        return instructionRegistry;
     }
 }

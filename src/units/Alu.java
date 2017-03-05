@@ -14,8 +14,8 @@ import cpu.Register;
  */
 public class Alu {
     
-    private Register collector;
-    private Register input;
+    private Register collector = new Register();
+    private Register input = new Register();
     
     public Alu() {
     }
@@ -57,5 +57,13 @@ public class Alu {
                 break;
             default: throw new IllegalArgumentException("No se reconoce la operacion seleccionada-ALU");
         }
+    }
+    
+    public Object getRegistryEntry(){
+        return input;
+    }
+    
+    public Object getRegistryCollector(){
+        return collector;
     }
 }

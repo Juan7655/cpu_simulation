@@ -45,7 +45,7 @@ public class DataRegisterTest {
         System.out.println("getPrefix1");
         int value = 65;
         DataRegister instance = new DataRegister();
-        Integer[] result = instance.getPrefix(value);
+        Integer[] result = instance.getDividedValue();
         Integer[] expResult = new Integer[]{0b0100,0b0001};
     
         assertEquals(expResult, result);
