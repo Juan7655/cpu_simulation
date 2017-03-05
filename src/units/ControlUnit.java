@@ -5,21 +5,18 @@
  */
 package units;
 
-import cpu.Clock;
-import cpu.Operation;
 import cpu.Register;
 
 /**
  *
  * @author juandavid
  */
-public class ControlUnit implements Clock {
+public class ControlUnit{
     
-    private final Register instructionRegistry = new Register();
+    private final Register instructionRegistry;
 
-    @Override
-    public void tick() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ControlUnit() {
+        this.instructionRegistry = new Register();
     }
     
     public void setInstruction(int value){
@@ -28,17 +25,6 @@ public class ControlUnit implements Clock {
     
     public int getLastInstruction(){
         return this.instructionRegistry.getLastRegistry();
-    }
-    
-    public Operation decode(int value) {
-        switch (value) {
-            case 0b0000: return Operation.SUM;
-            case 0b0001: return Operation.SUBTRACTION;
-            case 0b0010: return Operation.SQUARE;
-            case 0b0011: return Operation.MOVE;
-            case 0b0100: return Operation.END;
-            default: throw new IllegalArgumentException("No se reconoce la operacion seleccionada-ALU");
-        }
     }
     
     public Register getInstructionRegister(){

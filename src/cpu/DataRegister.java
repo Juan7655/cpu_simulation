@@ -11,12 +11,17 @@ package cpu;
  */
 public class DataRegister extends Register{
     
-    private int currentValue = -1;
-    
+    /**
+     * This method takes the actual registry it has and divides it into two parts. That is,
+     * takes a Byte and returns two nibbles. This simulates the moving of data from the Data Registry
+     * to the Directions Registry and the Instructions Registry
+     *
+     * @return Array of values corresponding to the Directions Register(prefix)
+     * and the Instructions Register(suffix)
+     */
     public Integer[] getDividedValue(){
-        if(this.currentValue == -1) this.currentValue = super.getLastRegistry();
+        String tempVal = Integer.toBinaryString(super.getLastRegistry());
         
-        String tempVal = Integer.toBinaryString(this.currentValue);
         while(tempVal.length() < 8) {
             tempVal = "0" + tempVal;
         }
@@ -25,7 +30,6 @@ public class DataRegister extends Register{
         values[0] = Integer.parseInt(tempVal.substring(0, 4), 2);
         values[1] = Integer.parseInt(tempVal.substring(4, tempVal.length()), 2);  
         
-        this.currentValue = -1;
         return values;
     }
 }

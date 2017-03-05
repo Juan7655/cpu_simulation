@@ -13,30 +13,36 @@ import units.*;
  */
 public class Synchronizer implements Clock {
 
-    private final ControlUnit controlUnit = new ControlUnit();
-    private final MemoryUnit memoryUnit = new MemoryUnit();
-    private final Alu alu = new Alu();
-    private final Register directionRegistry = new Register();
-    private final DataRegister dataRegistry = new DataRegister();
+    private final ControlUnit controlUnit;
+    private final MemoryUnit memoryUnit;
+    private final Alu alu;
+    private final Register directionRegistry;
+    private final DataRegister dataRegistry;
     private boolean continueRun;
-    private int runs = 0;
 
     public Synchronizer() {
+        this.alu = new Alu();
+        this.controlUnit = new ControlUnit();
+        this.memoryUnit = new MemoryUnit();
+        this.dataRegistry = new DataRegister();
+        this.directionRegistry = new Register();
         this.continueRun = true;
     }
 
+    /**
+     * Synchronizes all internal component activity with the clocks pulse.
+     */
     @Override
     public void tick() {
-        if (dataRegistry.getLastRegistry() == -1) {
-            directionRegistry.putRegistry(Counter.nextVal());
-        }
+        if (dataRegistry.getLastRegistry() == -1) directionRegistry.putRegistry(Counter.nextVal());
+
         dataRegistry.putRegistry(memoryUnit.getContent(directionRegistry.getLastRegistry()));
 
         Integer[] tempValues = dataRegistry.getDividedValue();
         directionRegistry.putRegistry(tempValues[0]);
         controlUnit.setInstruction(tempValues[1]);
 
-        Operation operation = controlUnit.decode(controlUnit.getLastInstruction());
+        Operation operation = Operation.decode(controlUnit.getLastInstruction());
         switch (operation) {
             case MOVE:
                 dataRegistry.putRegistry(alu.getCollector());
@@ -47,18 +53,11 @@ public class Synchronizer implements Clock {
                 this.continueRun = false;
                 break;
             default:
-                int content = memoryUnit.getContent(directionRegistry.getLastRegistry());
-                dataRegistry.putRegistry(content);
-                int data = dataRegistry.getLastRegistry();
-                alu.setInput(data);
+                dataRegistry.putRegistry(memoryUnit.getContent(directionRegistry.getLastRegistry()));
+                alu.setInput(dataRegistry.getLastRegistry());
                 alu.execute(operation);
         }
-
-        runs++;
-        if (continueRun) {
-            this.tick();
-        }
-
+        if (continueRun) this.tick();
     }
 
     public String[] getValues(int value) {

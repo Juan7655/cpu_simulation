@@ -16,7 +16,7 @@ public class MemoryUnit {
     private final HashMap<Integer, Integer> rom = new HashMap<>();
 
     public MemoryUnit() {
-        {
+        { //Filling ROM instructions. These can't be modified in the future
             int i = 0;
         rom.put(0b0000+(i++), 0b10000010);
         rom.put(0b0000+(i++), 0b10010001);
@@ -24,7 +24,7 @@ public class MemoryUnit {
         rom.put(0b0000+(i++), 0b10110011);
         rom.put(0b0000+(i++), 0b00000100);
         }
-        {
+        { //Filling RAM instructions. New values can be added later(Operation MOVE)
             int i = 0;
         ram.put(0b1000+(i++), 0b00001001);
         ram.put(0b1000+(i++), 0b01000001);
@@ -38,7 +38,7 @@ public class MemoryUnit {
     
     public int getContent(int address){
         int content = rom.getOrDefault(address, -1);
-        if(content==-1)content = ram.get(address);
+        if(content==-1) content = ram.get(address);
         
         return content;
     }

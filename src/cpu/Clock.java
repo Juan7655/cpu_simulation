@@ -6,7 +6,9 @@
 package cpu;
 
 /**
- *
+ * Represents the pulse of the Clock. Internally that means that all the data flow
+ * is synchronized with this "pulse"
+ * 
  * @author juandavid
  */
 public interface Clock {

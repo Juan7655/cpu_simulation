@@ -14,10 +14,12 @@ import cpu.Register;
  */
 public class Alu {
     
-    private Register collector = new Register();
-    private Register input = new Register();
+    private final Register collector;
+    private final Register input;
     
     public Alu() {
+        this.input = new Register();
+        this.collector = new Register();
     }
 
     public void setInput(int input) {

@@ -12,10 +12,12 @@ import java.util.Stack;
  * @author juandavid
  */
 public class Register {
-    private final Stack<Integer> records = new Stack<>();
-    private int currentValue = -1;
+    private final Stack<Integer> records;
+    private int currentValue;
 
     public Register() {
+        this.currentValue = -1;
+        this.records = new Stack<>();
     }
     
     public void putRegistry(int value){
@@ -30,6 +32,14 @@ public class Register {
         return temp;
     }
     
+    /**
+     * This method return the historical records of the values that the Register has taken
+     * with the size given. This is due to the fact that some registers work with nibbles 
+     * whilst others work with bytes.
+     *
+     * @param regSize the size of the values to return.
+     * @return String array with the records the Register has taken in.
+     */
     public String[] getAllItems(int regSize){
         String[] array = new String[this.records.size()];
         
