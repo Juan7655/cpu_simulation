@@ -17,20 +17,22 @@ public class MemoryUnit {
         { //Filling ROM instructions. These can't be modified in the future
             int i = 0;
         rom.put(0b0000+(i++), 0b10000000);
-        rom.put(0b0000+(i++), 0b10010001);
-        rom.put(0b0000+(i++), 0b11001000);
-        rom.put(0b0000+(i++), 0b10100000);
-        rom.put(0b0000+(i++), 0b10110011);
-        rom.put(0b0000+(i++), 0b11000000);
+        rom.put(0b0000+(i++), 0b10010111);
+        rom.put(0b0000+(i++), 0b10100010);
+        rom.put(0b0000+(i++), 0b11011000);
+        rom.put(0b0000+(i++), 0b10110000);
+        rom.put(0b0000+(i++), 0b11000001);
+        rom.put(0b0000+(i++), 0b11010000);
         rom.put(0b0000+(i++), 0b11101000);
-        rom.put(0b0000+(i++), 0b00001001);
+        rom.put(0b1111, 0b00001001);
         }
         { //Filling RAM instructions. New values can be added later(Operation MOVE)
             int i = 0;
-        ram.put(0b1000+(i++), 0b11000101);
-        ram.put(0b1000+(i++), 0b10111010);
-        ram.put(0b1000+(i++), 0b00001110);
-        ram.put(0b1000+(i++), 0b00000010);
+        ram.put(0b1000+(i++), 0b10000010);
+        ram.put(0b1000+(i++), 0b00000111);
+        ram.put(0b1000+(i++), 0b00011001);
+        ram.put(0b1000+(i++), 0b10000101);
+        ram.put(0b1000+(i++), 0b01010000);
         }
     }
     
