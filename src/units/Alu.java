@@ -16,6 +16,7 @@ public class Alu {
     public Alu() {
         this.input = new Register();
         this.collector = new Register();
+        collector.putRegistry(0);
     }
 
     public void setInput(int input) {
@@ -24,6 +25,7 @@ public class Alu {
 
     public int getCollector() {
         int temp = collector.getLastRegistry();
+        collector.putRegistry(0);
 
         return temp;
     }
@@ -45,7 +47,15 @@ public class Alu {
     }
 
     private void power() {
-        setCollector(collector.getLastRegistry() ^ input.getLastRegistry());
+        int base = collector.getLastRegistry(),
+                index = input.getLastRegistry(),
+                power = base;
+        
+        for (int i = 1; i < index; i++) {
+            power *= base;
+        }
+        
+        setCollector(power);
     }
 
     private void not() {
@@ -66,7 +76,7 @@ public class Alu {
         String result = "";
 
         for (int i = 0; i < tempVal1.length; i++) {
-            result = result.concat((tempVal1[i] + tempVal2[i]).equals("00") ? "1" : "0");
+            result = result.concat(!(tempVal1[i].equals("1") || tempVal2[i].equals("1")) ? "1" : "0");
         }
 
         collector.putRegistry(Integer.parseInt(result, 2));
@@ -79,7 +89,7 @@ public class Alu {
         String result = "";
 
         for (int i = 0; i < tempVal1.length; i++) {
-            result = result.concat((tempVal1[i] + tempVal2[i]).equals("11") ? "1" : "0");
+            result = result.concat(tempVal1[i].equals("1") && tempVal2[i].equals("1") ? "1" : "0");
         }
 
         collector.putRegistry(Integer.parseInt(result, 2));

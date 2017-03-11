@@ -7,7 +7,6 @@ package cpu;
 
 import units.*;
 
-
 public class Synchronizer implements Clock {
 
     private final ControlUnit controlUnit;
@@ -31,7 +30,9 @@ public class Synchronizer implements Clock {
      */
     @Override
     public void tick() {
-        if (dataRegistry.getLastRegistry() == -1) directionRegistry.putRegistry(Counter.nextVal());
+        if (dataRegistry.getLastRegistry() == -1) {
+            directionRegistry.putRegistry(Counter.nextVal());
+        }
 
         dataRegistry.putRegistry(memoryUnit.getContent(directionRegistry.getLastRegistry()));
 
@@ -54,7 +55,9 @@ public class Synchronizer implements Clock {
                 alu.setInput(dataRegistry.getLastRegistry());
                 alu.execute(operation);
         }
-        if (continueRun) this.tick();
+        if (continueRun) {
+            this.tick();
+        }
     }
 
     public String[] getValues(int value) {
@@ -69,6 +72,10 @@ public class Synchronizer implements Clock {
                 return ((Register) alu.getRegistryEntry()).getAllItems(8);
             case 4:
                 return ((Register) alu.getRegistryCollector()).getAllItems(8);
+            case 5:
+                return memoryUnit.getAllItemsRam()[0];
+            case 6:
+                return memoryUnit.getAllItemsRam()[1];
             default:
                 return null;
         }

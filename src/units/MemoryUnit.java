@@ -6,6 +6,7 @@
 package units;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class MemoryUnit {
@@ -15,17 +16,21 @@ public class MemoryUnit {
     public MemoryUnit() {
         { //Filling ROM instructions. These can't be modified in the future
             int i = 0;
-        rom.put(0b0000+(i++), 0b10000010);
+        rom.put(0b0000+(i++), 0b10000000);
         rom.put(0b0000+(i++), 0b10010001);
+        rom.put(0b0000+(i++), 0b11001000);
         rom.put(0b0000+(i++), 0b10100000);
         rom.put(0b0000+(i++), 0b10110011);
-        rom.put(0b0000+(i++), 0b00000100);
+        rom.put(0b0000+(i++), 0b11000000);
+        rom.put(0b0000+(i++), 0b11101000);
+        rom.put(0b0000+(i++), 0b00001001);
         }
         { //Filling RAM instructions. New values can be added later(Operation MOVE)
             int i = 0;
-        ram.put(0b1000+(i++), 0b00001001);
-        ram.put(0b1000+(i++), 0b01000001);
-        ram.put(0b1000+(i++), 0b01100100);
+        ram.put(0b1000+(i++), 0b11000101);
+        ram.put(0b1000+(i++), 0b10111010);
+        ram.put(0b1000+(i++), 0b00001110);
+        ram.put(0b1000+(i++), 0b00000010);
         }
     }
     
@@ -35,8 +40,19 @@ public class MemoryUnit {
     
     public int getContent(int address){
         int content = rom.getOrDefault(address, -1);
-        if(content==-1) content = ram.get(address);
+       
+        return (content == -1? ram.get(address): content);
+    }
+    
+    public String[][] getAllItemsRam(){
+        String[][] temp = new String[2][ram.size()];
+        int i = 0;
         
-        return content;
+        for (Map.Entry<Integer, Integer> entry : ram.entrySet()) {
+            temp[0][i] = Integer.toBinaryString(entry.getKey());
+            temp[1][i++] = Integer.toBinaryString(entry.getValue());
+        }
+        
+        return temp;
     }
 }

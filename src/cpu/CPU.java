@@ -7,7 +7,6 @@ package cpu;
 
 import gui.Principal;
 
-
 public class CPU {
 
     /**
@@ -20,7 +19,9 @@ public class CPU {
                 principal.getValues(1),
                 principal.getValues(2),
                 principal.getValues(3),
-                principal.getValues(4))
+                principal.getValues(4),
+                principal.getValues(5),
+                principal.getValues(6))
                 .setVisible(true);
 
     }
