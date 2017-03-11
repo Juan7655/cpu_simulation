@@ -7,10 +7,7 @@ package cpu;
 
 import gui.Principal;
 
-/**
- *
- * @author juandavid
- */
+
 public class CPU {
 
     /**

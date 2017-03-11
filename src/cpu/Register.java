@@ -7,10 +7,7 @@ package cpu;
 
 import java.util.Stack;
 
-/**
- *
- * @author juandavid
- */
+
 public class Register {
     private final Stack<Integer> records;
     private int currentValue;

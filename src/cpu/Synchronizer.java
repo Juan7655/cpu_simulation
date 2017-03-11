@@ -7,10 +7,7 @@ package cpu;
 
 import units.*;
 
-/**
- *
- * @author juandavid
- */
+
 public class Synchronizer implements Clock {
 
     private final ControlUnit controlUnit;

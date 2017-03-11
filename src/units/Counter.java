@@ -5,10 +5,7 @@
  */
 package units;
 
-/**
- *
- * @author juandavid
- */
+
 public class Counter {
     private static int value = 0;
     

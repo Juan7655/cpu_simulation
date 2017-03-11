@@ -5,10 +5,7 @@
  */
 package gui;
 
-/**
- *
- * @author juandavid
- */
+
 public class Principal extends javax.swing.JFrame {
 
     /**

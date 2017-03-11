@@ -5,10 +5,7 @@
  */
 package cpu;
 
-/**
- *
- * @author juandavid
- */
+
 public class DataRegister extends Register{
     
     /**

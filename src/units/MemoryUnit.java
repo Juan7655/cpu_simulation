@@ -7,10 +7,7 @@ package units;
 
 import java.util.HashMap;
 
-/**
- *
- * @author juandavid
- */
+
 public class MemoryUnit {
     private final HashMap<Integer, Integer> ram = new HashMap<>();
     private final HashMap<Integer, Integer> rom = new HashMap<>();

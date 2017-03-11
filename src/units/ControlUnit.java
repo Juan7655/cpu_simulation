@@ -7,10 +7,7 @@ package units;
 
 import cpu.Register;
 
-/**
- *
- * @author juandavid
- */
+
 public class ControlUnit{
     
     private final Register instructionRegistry;

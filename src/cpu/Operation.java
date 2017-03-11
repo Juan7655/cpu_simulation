@@ -5,16 +5,19 @@
  */
 package cpu;
 
-/**
- *
- * @author juandavid
- */
+
 public enum Operation {
+    //To add operations, change the declaration here and the definition in the ALU
     SUM ("+", 0b0000), 
     SUBTRACTION ("-", 0b0001), 
-    SQUARE ("^2", 0b0010), 
-    MOVE ("M", 0b0011), 
-    END ("E", 0b0100);
+    PRODUCT ("*", 0b0010), 
+    POWER ("^", 0b0011),
+    NOT ("NOT", 0b0100),
+    NOR ("NOR", 0b0101),
+    AND ("AND", 0b0110),
+    MOD ("MOD", 0b0111),
+    MOVE ("M", 0b1000), 
+    END ("E", 0b1001);
     
     private final String symbol;
     private final int direction;
