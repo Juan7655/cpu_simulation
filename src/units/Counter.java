@@ -6,7 +6,7 @@
 package units;
 
 
-public class Counter {
+public class Counter{
     private static int value = 0;
     
     public static int nextVal(){
