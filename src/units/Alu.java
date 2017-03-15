@@ -65,8 +65,9 @@ public class Alu {
         for (String c : tempValIn.split("")) {
             tempValOut = tempValOut.concat("0".equals(c) ? "1" : "0");
         }
-
+        
         collector.putRegistry(Integer.parseInt(tempValIn, 2));
+        collector.putRegistry(Integer.parseInt(tempValOut, 2));
     }
 
     private void nor() {
